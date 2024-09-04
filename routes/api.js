@@ -7,9 +7,17 @@
 */
 
 'use strict';
-// const mongoose = require('mongoose');
-// const commentModel = require('../models').Comment;
-const bookModel = require('../models').Book;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+// create book schema
+const bookSchema = new Schema({
+    title: { type: String, required: true },
+    comments: [],
+    commentcount: { type: Number, default: 0 }
+});
+
+const bookModel = mongoose.model('bookModel', bookSchema);
 
 module.exports = function (app) {
 
