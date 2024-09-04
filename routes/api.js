@@ -111,7 +111,11 @@ module.exports = function (app) {
       //if successful response will be 'delete successful'
       bookModel.findByIdAndDelete(bookid)
         .then(data => {
-          res.send('delete successful');
+          if (!data) {
+            res.send('no book exists')
+          } else {
+            res.send('delete successful');
+          }
         })
         .catch(err=>console.log(err));
     });
